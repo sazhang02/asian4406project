@@ -1,11 +1,9 @@
 ﻿# The script of the game goes in this file.
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
 define p = Character("[player]", color="#c8c8ff")
 define c = Character("Co-worker")
-define m = Character("Cafe Employee")
+define m = Character("[employee]", color="#ffffd3")
+define s = Character("Serenity", color="#c8ffc8")
 
 image coffee = im.Scale("bg coffee.jpeg", 1300, 1000)
 image black = im.Scale("bg black.jpeg", 1300, 1000)
@@ -13,7 +11,9 @@ image mascot = im.Scale("bg street.jpeg", 1300, 800)
 image outside_entrance = im.Scale("bg storefront.jpeg", 1300, 780)
 image cafe = im.Scale("bg cafe.jpg", 1300, 1000)
 image latte = im.Scale("bg latte.jpg", 1300, 800)
-
+image latte = im.Scale("bg latte.jpg", 1300, 800)
+image serenity = im.Scale("Hana/Maid/Hana_maid_smile.png", 400, 700)
+image serenity_upset = im.Scale("Hana/Maid/Hana_maid_upset.png", 400, 700)
 
 # The game starts here.
 
@@ -26,8 +26,7 @@ label start:
 
     if not player:
          $player = "Average Joe"
-
-    # show eileen happy
+    $ employee = "Cafe Employee"
 
     "Welcome to \"Cuddles N Coffee\" [player]!"
     "This is an iyashi visual novel centered around a cat cafe.
@@ -60,15 +59,18 @@ label start:
     play sound "audio/bump.mp3"
     "BANG"
     stop sound
-    "It seems like you bumped into something incredibly fuzzy."
-    "???" "Are you alright!?"
+    "It seems like you bumped into something incredibly fuzzy and then fell to the floor."
+    $ employee = "???"
+    m "Are you alright!?"
 
     scene mascot
     play music "audio/daffodil.mp3" volume 0.5 loop
 
     "You open your eyes to a startled person in a cat costume.
     They are wearing a big sign advertising a cat cafe.
-    After regaining your senses you answer the concerned employee."
+    After getting up and regaining your senses you answer the concerned employee."
+
+    $ employee = "Cafe Employee"
 
     p "I'm alright."
     "As you respond, you feel yourself tipping over. Luckily you were able
@@ -111,12 +113,54 @@ label start:
     play sound "audio/door.mp3"
     scene cafe
 
-    "What a homely place"
-    scene latte
-    "nice"
+    "What a homely place!"
+    "The cafe is nice and quiet. Immediately, you can spot a few cats roaming about."
+    "You can smell a light, sweet scent from the back of the cafe.
+    There are all kinds of cushions and comfort items that remind you of home."
+    "The place is a bit messy for a cafe, but this strikes you as a suprisingly plesant feature."
+    "Having stuff around makes you feel at ease compared to the usual prim and perfect
+    restaurants your company sends you to for meetings."
+    "Perhaps, it's the imperfection of the place that makes it seem comfortable."
 
+    show serenity
+    s "Welcome to Cuddles N Coffee, home of the most cuddly cats and cutest
+    latte art! My name is Serenity. How may I help y-"
+    show serenity_upset
+    s "Tran? Why are you inside? Tranquility Mark Johnson please tell me you
+    need more pamphlets and didn't pressure this customer to our cafe."
 
+    $ employee = "Cafe Employee (Tran)"
+    m "Serenity! I accidently bumped into this person and since they seemed
+    hurt I invited them inside."
+    s "*sigh*"
+    hide serenity_upset
+    show serenity
+    s "You are always so clumsy."
+    s "I apologize for our employees clumsiness. There's some dirt on your arms.
+    Let's get you cleaned up. Tran, you can head out I'll take care of this."
 
+    play sound "audio/door.mp3"
+
+    "The cafe employee known as \"Tran\" heads out. Although they were bickering,
+    it seems like they are good friends. Serenity heads to the back
+    of the cafe and brings you a clean, hot towel. You wipe off the dirt and
+    hand it back. "
+
+    s "Although this must have been a rough evening for you, I hope you enjoy
+    your time at Cuddles N Coffee. Have you ever been to a cat cafe before?"
+
+    menu:
+        "Yes":
+            "That's great! I'm sure the cats will be happy to meet you."
+        "No":
+            "Serenity proceeds to explain the nature of cat cafes. She
+            instructs you to be careful around the cats and avoid disturbing
+            the ones that are sleeping."
+    s "Let me show you what the cafe has to offer."
+    "Serenity hands you sonme hand sanitizer and then presents you a pamphlet
+    with different options of what to do."
+    s "Please feel free to explore the cafe and use the place as you would like!
+    What would you like to do?"
 
     # This ends the game.
     return
