@@ -29,7 +29,20 @@ define config.version = "1.0"
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
+# {a=}Busy Street{/a}\n
 define gui.about = _p("""
+Image Credits:\n
+    {a=https://www.pexels.com/photo/beverage-break-breakfast-brown-414630/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Welcome Screen{/a}\n
+    {a=https://www.pexels.com/photo/busy-street-during-nighttime-1862000/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Busy Street{/a}\n
+    {a=https://www.pexels.com/photo/cat-mascot-outdoors-2133243/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Cat Cafe Employee on Street{/a}\n
+    {a=https://www.pexels.com/photo/young-female-employee-in-uniform-placing-signboard-against-cafe-4349944/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Front of Cafe{/a}\n
+    {a=https://www.pxfuel.com/en/free-photo-xgsxw}Cafe Interior{/a}\n
+    {a=https://www.pxfuel.com/en/free-photo-jqqru}Cat Latte{/a}\n
+    {a=https://noranekogames.itch.io/hana}Serenity's sprite{/a}\n
+Sound Credits:\n
+    {a=https://youtu.be/jmuJp29d57Q}Daffodil By Music Panda - Vlog No Copyright Free Music{/a}\n
+    {a=https://youtu.be/Atu9SrFjjUU}Cartoon Bump Sound Effect{/a}\n
+    {a=https://youtu.be/QQ2lbJzdWLg}Shop Door Opens with Bell Rings SFX{/a}\n
 """)
 
 
