@@ -4,6 +4,7 @@ define p = Character("[player]", color="#c8c8ff")
 define c = Character("Co-worker")
 define m = Character("[employee]", color="#ffffd3")
 define s = Character(_("Serenity"), color="#c8ffc8")
+define l = Character(_("[cat]"), color="#966fd6")
 
 image coffee = im.Scale("bg coffee.jpeg", 1300, 1000)
 image black = im.Scale("bg black.jpeg", 1300, 1000)
@@ -14,6 +15,8 @@ image latte = im.Scale("bg latte.jpg", 1300, 800)
 image latte = im.Scale("bg latte.jpg", 1300, 800)
 image serenity = im.Scale("Hana/Maid/Hana_maid_smile.png", 400, 700)
 image serenity_upset = im.Scale("Hana/Maid/Hana_maid_upset.png", 400, 700)
+image luna = im.Scale("bg cat.jpeg", 1300, 750)
+image couch_cat = im.Scale("bg rest cat.jpeg", 1300, 750)
 
 
 # The game starts here.
@@ -30,19 +33,10 @@ init python:
             self.label = label
             self.title = title
 
-            # if move and (move != "after"):
-            #     self.move_before = True
-            # else:
-            #     self.move_before = False
-            #
-            # if move and (move != "before"):
-            #     self.move_after = True
-            # else:
-            #     self.move_after = False
-
             actions.append(self)
 
-    Action("action_cat", _("Player Experience"))
+    Action("action_cat", _("Play with a cat"))
+    Action("action_rest", _("Rest on the couch"))
 
 screen actions(adj):
 
@@ -79,7 +73,7 @@ screen actions(adj):
 
         bar adjustment adj style "vscrollbar"
 
-        textbutton _("That's enough for now."):
+        textbutton _("Head Home"):
             xfill True
             action Return(False)
             top_margin 10
@@ -98,7 +92,8 @@ label start:
 
     if not player:
          $player = "Average Joe"
-    $ employee = "Cafe Employee"
+    # $ employee = "Cafe Employee"
+    $ cat = "???"
 
     "Welcome to \"Cuddles N Coffee\" [player]!"
     "This is an iyashi visual novel centered around a cat cafe.
@@ -106,7 +101,7 @@ label start:
     "We shall now proceed with the game."
 
     scene bg busy street
-    play music "audio/daffodil.mp3" volume 0.5 loop
+    play music "audio/joyful_love.mp3" volume 0.5 loop
 
     "9 P.M."
     "Another day of working overtime."
@@ -136,7 +131,7 @@ label start:
     m "Are you alright!?"
 
     scene mascot
-    play music "audio/daffodil.mp3" volume 0.5 loop
+    play music "audio/joyful_love.mp3" volume 0.5 loop
 
     "You open your eyes to a startled person in a cat costume.
     They are wearing a big sign advertising a cat cafe.
@@ -192,13 +187,13 @@ label start:
     "The place is a bit messy for a cafe, but this strikes you as a suprisingly plesant feature."
     "Having stuff around makes you feel at ease compared to the usual prim and perfect
     restaurants your company sends you to for meetings."
-    "Perhaps, it's the imperfection of the place that makes it seem comfortable."
+    "Perhaps, it's the imperfection of the place that makes it seem more comfortable."
 
     show serenity
     s "Welcome to Cuddles N Coffee, home of the most cuddly cats and cutest
     latte art! My name is Serenity. How may I help y-"
     show serenity_upset
-    s "Tran? Why are you inside? Tranquility Mark Johnson please tell me you
+    s "Tran? Why are you inside? Tran Anne Quility please tell me you
     need more pamphlets and didn't pressure this customer to our cafe."
 
     $ employee = "Cafe Employee (Tran)"
@@ -256,21 +251,18 @@ label options:
     if not action:
         jump end
 
-    # if action.move_before:
-    #     show serenity at left
-    #     with move
-
-
     call expression action.label from _call_expression
-
-    # if action.move_after:
-    #     # hide example
-    #     show serenity at left
-    #     with move
 
     jump options
 
 
 label end:
-    "You leave the cafe and head back home"
+    "You tell Serenity you need to leave. She takes a commemorative photo of you
+    and the cats. After saying goodbye to the cats you take your leave."
+    play sound "audio/door.mp3"
+    scene bg busy street
+    stop music fadeout 1.0
+    "As you walk back home, you feel a lot more energetic. Maybe you should go
+    back again tomorrow."
+
     return

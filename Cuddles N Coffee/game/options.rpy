@@ -38,6 +38,7 @@ Image Credits:\n
     {a=https://www.pexels.com/photo/young-female-employee-in-uniform-placing-signboard-against-cafe-4349944/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Front of Cafe{/a}\n
     {a=https://www.pxfuel.com/en/free-photo-xgsxw}Cafe Interior{/a}\n
     {a=https://www.pexels.com/photo/grey-kitten-on-floor-774731/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Grey Cat{/a}\n
+    {a=https://www.pexels.com/photo/short-coated-gray-cat-20787/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Couch Cat{/a}\n
     {a=https://www.pxfuel.com/en/free-photo-jqqru}Cat Latte{/a}\n
     {a=https://noranekogames.itch.io/hana}Serenity's sprite{/a}\n
 Sound Credits:\n
