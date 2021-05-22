@@ -236,6 +236,7 @@ label start:
     jump options
 
 label options:
+    scene cafe
     show serenity
     show serenity at left
     with move
