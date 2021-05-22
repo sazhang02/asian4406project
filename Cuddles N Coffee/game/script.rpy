@@ -3,7 +3,7 @@
 define p = Character("[player]", color="#c8c8ff")
 define c = Character("Co-worker")
 define m = Character("[employee]", color="#ffffd3")
-define s = Character("Serenity", color="#c8ffc8")
+define s = Character(_("Serenity"), color="#c8ffc8")
 
 image coffee = im.Scale("bg coffee.jpeg", 1300, 1000)
 image black = im.Scale("bg black.jpeg", 1300, 1000)
@@ -15,11 +15,83 @@ image latte = im.Scale("bg latte.jpg", 1300, 800)
 image serenity = im.Scale("Hana/Maid/Hana_maid_smile.png", 400, 700)
 image serenity_upset = im.Scale("Hana/Maid/Hana_maid_upset.png", 400, 700)
 
+
 # The game starts here.
 
-label start:
+init python:
+    actions = []
+    class Action(object):
+        """
+        Represents a label that we can jump to.
+        """
 
+        def __init__(self, label, title):
+            self.kind = "action"
+            self.label = label
+            self.title = title
+
+            # if move and (move != "after"):
+            #     self.move_before = True
+            # else:
+            #     self.move_before = False
+            #
+            # if move and (move != "before"):
+            #     self.move_after = True
+            # else:
+            #     self.move_after = False
+
+            actions.append(self)
+
+    Action("action_cat", _("Player Experience"))
+
+screen actions(adj):
+
+    frame:
+        xsize 640
+        xalign .5
+        ysize 485
+        ypos 30
+
+        has side "c r b"
+
+        viewport:
+            yadjustment adj
+            mousewheel True
+
+            vbox:
+                for i in actions:
+
+                    if i.kind == "action":
+
+                        textbutton i.title:
+                            action Return(i)
+                            left_padding 20
+                            xfill True
+
+                    else:
+
+                        null height 10
+                        text i.title alt ""
+                        null height 5
+
+
+
+
+        bar adjustment adj style "vscrollbar"
+
+        textbutton _("That's enough for now."):
+            xfill True
+            action Return(False)
+            top_margin 10
+
+
+default options_first_time = True
+default actions_adjustment = ui.adjustment()
+
+label start:
+    window show
     scene coffee
+
 
     $ player = renpy.input("What is your name?")
     $ player = player.strip()
@@ -157,10 +229,47 @@ label start:
             instructs you to be careful around the cats and avoid disturbing
             the ones that are sleeping."
     s "Let me show you what the cafe has to offer."
-    "Serenity hands you sonme hand sanitizer and then presents you a pamphlet
+    "Serenity hands you some hand sanitizer and then presents you a pamphlet
     with different options of what to do."
-    s "Please feel free to explore the cafe and use the place as you would like!
-    What would you like to do?"
+    s "Please feel free to explore the cafe and use the place as you would like!"
+    hide serenity
+    jump options
 
-    # This ends the game.
+label options:
+    show serenity
+    show serenity at left
+    with move
+
+    if options_first_time:
+        $ s(_("What would you like to do?"), interact=False)
+    else:
+        $ s(_("Is there anything else you'd like to do?"), interact=False)
+
+    $ options_first_time = False
+    $ renpy.choice_for_skipping()
+
+    call screen actions(adj=actions_adjustment)
+
+    $ action = _return
+
+    if not action:
+        jump end
+
+    # if action.move_before:
+    #     show serenity at left
+    #     with move
+
+
+    call expression action.label from _call_expression
+
+    # if action.move_after:
+    #     # hide example
+    #     show serenity at left
+    #     with move
+
+    jump options
+
+
+label end:
+    "You leave the cafe and head back home"
     return
