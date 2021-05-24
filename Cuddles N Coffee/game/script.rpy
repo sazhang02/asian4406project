@@ -12,7 +12,6 @@ image mascot = im.Scale("bg street.jpeg", 1300, 800)
 image outside_entrance = im.Scale("bg storefront.jpeg", 1300, 780)
 image cafe = im.Scale("bg cafe.jpg", 1300, 1000)
 image latte = im.Scale("bg latte.jpg", 1300, 800)
-image latte = im.Scale("bg latte.jpg", 1300, 800)
 image serenity = im.Scale("Hana/Maid/Hana_maid_smile.png", 400, 700)
 image serenity_upset = im.Scale("Hana/Maid/Hana_maid_upset.png", 400, 700)
 image luna = im.Scale("bg cat.jpeg", 1300, 750)
@@ -37,6 +36,7 @@ init python:
 
     Action("action_cat", _("Play with a cat"))
     Action("action_rest", _("Rest on the couch"))
+    Action("action_latte", _("Drink a latte"))
 
 screen actions(adj):
 
