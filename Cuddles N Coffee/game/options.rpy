@@ -41,6 +41,7 @@ Image Credits:\n
     {a=https://www.pexels.com/photo/short-coated-gray-cat-20787/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels}Couch Cat{/a}\n
     {a=https://www.pxfuel.com/en/free-photo-jqqru}Cat Latte{/a}\n
     {a=https://noranekogames.itch.io/hana}Serenity's sprite{/a}\n
+    {a=https://icons8.com/icons/set/cat}File Cat Image{/a}\n
 Sound Credits:\n
     {a=https://youtu.be/jmuJp29d57Q}Daffodil By Music Panda - Vlog No Copyright Free Music{/a}\n
     {a=https://youtu.be/Atu9SrFjjUU}Cartoon Bump Sound Effect{/a}\n

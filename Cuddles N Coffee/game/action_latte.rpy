@@ -3,8 +3,8 @@ s "Take a seat at the table and I bring you our house special \"Super Fluffy Cud
 
 hide serenity
 
-"You take a seat at the table. It's been a while since you have had some
-good coffee. All you have at home and the office is instant coffee."
+"You take a seat at the table. It's been a while since you have had a brewed cup
+of coffee. All you have at home and the office is instant coffee."
 
 show serenity
 

@@ -44,12 +44,12 @@ label action_cat:
     you are assigned."
     "What did you have to do again tomorrow? Prep the documen-"
     l "Meow!"
-    "Luna grabs one of the cat toys. It seems she wants a change of pace. 
+    "Luna grabs one of the cat toys. It seems she wants a change of pace.
     Could she have noticed the stress you were feeling? There's no way a cat
     would know about stress, right?"
     "Luna pounces on the toys. So lively!"
     "After playing with Luna for a bit, she heads off. This was pretty fun."
 
 
-    "You head back to Serenity at the front desk"
+    "You head back to Serenity at the front desk."
     return
